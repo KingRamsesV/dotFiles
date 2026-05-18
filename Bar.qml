@@ -25,24 +25,23 @@ Scope {
 
           implicitHeight: barHeight
 
-          /*
+
           margins {
-            left: screen.width * 0.0075
-            right: screen.width * 0.0075
-            top: screen.height * 0.015
-          } */
+            left: 8
+            right: 8
+            top: 8
+          }
 
 
           Rectangle {
             width: window.width
             height: window.height
             color: "#ae8d75"
-            radius: 20
+            radius: 6
           }
 
           BatteryWidget {
-            anchors.left: true
-            verticalCenter: true
+            // anchors.left: true
           }
 
           ClockWidget {

@@ -19,8 +19,8 @@ Rectangle {
     IconImage {
         anchors.centerIn: parent
         Image {
-            var path = "/usr/share/icons/Adawaita/symbolic/status/battery-level-" << "-symbolic.svg"
-            var intermediate = Math.round((Battery.batteryPercentage * 100)/10) * 10
+            // var path = "/usr/share/icons/Adawaita/symbolic/status/battery-level-" << Math.round((Battery.batteryPercentage * 100)/10) * 10 << "-symbolic.svg"
+            // var intermediate = Math.round((Battery.batteryPercentage * 100)/10) * 10
             id: batteryIcon
             source: path.arg(intermediate)
         }

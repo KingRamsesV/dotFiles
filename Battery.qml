@@ -8,8 +8,18 @@ Singleton {
     id: root
 
     readonly property real batteryPercentage: {
-        UPowerDevice.percentage
+        if (UPowerDevice.ready) {
+            UPowerDevice.percentage
+        }
+        else if(UPowerDeviceState.toString() === "Charging"){
+            "Charging"
+        }
     }
+
+    function f(batteryPercentage) {
+        console.log("battery is ", a)
+    }
+
     readonly property string isCharging: {
         if (UPowerDeviceState.toString() === "Charging") {
             "Charging"
