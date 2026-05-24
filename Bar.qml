@@ -1,7 +1,9 @@
 import QtQuick
-import QtQuick.Shapes
 import Quickshell
 import Quickshell.Io
+import Quickshell.Wayland
+
+import "popouts"
 
 Scope {
   id: root
@@ -10,69 +12,57 @@ Scope {
       model: Quickshell.screens;
 
         PanelWindow {
-          id: window
-          property real barHeight: screen.height * 0.025
-          property real offset: 0.95
-          property string primaryColor: "transparent"
-          required property var modelData
-          screen: modelData
+          id: window;
+          property real barHeight: screen.height * 0.025;
+          property real offset: 0.95;
+          readonly property string primaryColor: "#ae8d75";
+          readonly property string secondaryColor: "#dea795";
+          readonly property string primaryFont: "Terminess Nerd Font";
+          required property var modelData;
+          screen: modelData;
+          color: "transparent";
 
           anchors {
-            left: true
-            right: true
-            top: true
+            left: true;
+            right: true;
+            top: true;
+            bottom: false;
           }
 
-          implicitHeight: barHeight
+          implicitHeight: barHeight;
 
 
           margins {
-            left: 8
-            right: 8
-            top: 8
+            left: 8;
+            right: 8;
+            top: 8;
           }
 
-
-          Rectangle {
-            width: window.width
-            height: window.height
-            color: "#ae8d75"
-            radius: 6
+          Item {
+            id: content;
+              Rectangle {
+                width: window.width;
+                height: window.height;
+                color: "#ae8d75";
+                radius: 6;
+                border.color: "black";
+                border.width: 1;
+              }
           }
 
           BatteryWidget {
-            // anchors.left: true
+            id: topBattery;
           }
+
 
           ClockWidget {
-            anchors.centerIn: parent
+            id: topClock;
+            anchors.centerIn: parent;
           }
 
-          color: primaryColor
+          ClockDetail {
+          }
 
-          /*
-          Shape {
-        // main bar on top
-        ShapePath {
-          fillColor: "#ffffff"
-          strokeColor: "transparent"
-          PathLine { x: 0;   y: 0  }
-          PathLine { x: window.width; y: 0  }
-          PathLine { x: window.width; y: window.barHeight }
-          PathLine { x: 0;   y: window.barHeight }
-        }
-        ShapePath {
-          id: path
-          property real widthOffset: window.width * .997
-          property real heightOffset: window.height * window.offset
-          fillColor: "#222266"
-          strokeColor: "transparent"
-          startX: 0 ; startY: 0 // top-left
-          PathLine { x: path.widthOffset; y: 0 }  // top-right
-          PathLine { x: path.widthOffset; y: path.heightOffset }  // bottom-right
-          PathLine { x: 0; y: path.heightOffset} //bottom-left
-        }
-          }*/
         }
       }
 }

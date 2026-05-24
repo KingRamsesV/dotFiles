@@ -1,22 +1,26 @@
 import QtQuick
+import Quickshell
+import Quickshell.Wayland
+
+
 
 MouseArea {
     id: timeArea
     hoverEnabled: true;
     cursorShape: Qt.PointingHandCursor;
-    implicitHeight: parent.height;
-    implicitWidth: timeRect.implicitWidth + 5;
-    function onClicked() {
-        timeArea.color = "purple";
-    }
+    height: parent.height;
+    width: timeRect.width + 50;
+    readonly property alias clockHover: timeArea.containsMouse
 
     Rectangle {
         id: timeRect
-        implicitWidth: 50
-        implicitHeight: (screen.height * 0.025) - 8
+        width: 50
+        height: (screen.height * 0.025) - 8
         anchors.centerIn: parent
-        color: timeArea.containsMouse ? "white" : "#dea795"
+        color: timeArea.containsMouse ? window.primaryColor : window.secondaryColor;
         radius: 6
+        border.color: "black";
+        border.width: 1;
 
         Text {
         anchors.centerIn: parent
@@ -24,5 +28,4 @@ MouseArea {
         font: "Terminess Nerd Font"
         }
     }
-
 }

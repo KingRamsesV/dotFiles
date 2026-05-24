@@ -1,28 +1,40 @@
 import QtQuick
 import Quickshell
+import Quickshell.Services.UPower
 import Quickshell.Widgets
 
 
-Rectangle {
-    implicitWidth: 150
-    implicitHeight: (screen.height * 0.025) - 8
-    color: "#dea795"
-    radius: 20
+MouseArea {
+    id: root
+    width: 150
+    height: parent.height
+    anchors.left: parent.left;
+    anchors.leftMargin: 8;
+    anchors.verticalCenter: parent.verticalCenter;
+    hoverEnabled: true;
+    cursorShape: Qt.PointingHandCursor;
+    readonly property alias batteryHover: root.containsMouse;
 
+    property UPowerDevice bat:
+        UPower.displayDevice
+
+    Rectangle {
+        width: 150;
+        height: parent.height - 8;
+        color: batteryHover ? window.primaryColor : window.secondaryColor;
+        radius: 6;
+        border.color: "black";
+        border.width: 1;
+        anchors.centerIn: parent;
+    }
 
     Text {
         anchors.centerIn: parent
-        text: (Battery.batteryPercentage) * 100
-        font: "Terminess Nerd Font"
-    }
-
-    IconImage {
-        anchors.centerIn: parent
-        Image {
-            // var path = "/usr/share/icons/Adawaita/symbolic/status/battery-level-" << Math.round((Battery.batteryPercentage * 100)/10) * 10 << "-symbolic.svg"
-            // var intermediate = Math.round((Battery.batteryPercentage * 100)/10) * 10
-            id: batteryIcon
-            source: path.arg(intermediate)
+        text: {
+            const pct = Math.round(bat.percentage * 100);
+            const icon = bat.state === UPowerDeviceState.Charging ? "⚡" : pct > 60 ? "big harge" : pct > 20 ? "wittle charg" : "❗";
+            return bat.isPresent ? icon + " " + pct + "%" : "...";
         }
+        font.family: window.primaryFont;
     }
 }
