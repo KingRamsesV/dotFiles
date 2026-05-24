@@ -12,20 +12,45 @@ PanelWindow {
     WlrLayershell.layer: "Top";
     margins.top: 10;
     exclusiveZone: 0;
-    implicitHeight: 125;
+    implicitHeight: 150;
+    implicitWidth: 125;
+    readonly property real transitionOpacity: 1;
+
+    Rectangle {
+        id: rectShadow;
+        width: rectCont.width;
+        height: rectCont.height;
+        color: window.primaryShadowColor;
+        radius: rectCont.radius;
+        border.color: "black";
+        opacity: 0;
+        anchors.centerIn: rectCont;
+        anchors.verticalCenterOffset: +5;
+        anchors.horizontalCenterOffset: +5;
+
+        states: State {
+            name: "visible"; when: topClock.containsMouse;
+            PropertyChanges { target: rectShadow; opacity: root.transitionOpacity; }
+        }
+
+        transitions: Transition {
+            NumberAnimation { properties: "opacity"; easing.type: Easing.InOutQuad }
+        }
+    }
 
     Rectangle {
         id: rectCont;
         width: 100;
-        height: root.implicitHeight;
+        height: 125;
         color: window.primaryColor;
         radius: 6;
         border.color: "black";
         opacity: 0;
+        anchors.centerIn: bar;
 
         states: State {
             name: "visible"; when: topClock.containsMouse;
-            PropertyChanges { target: rectCont; opacity: 0.8; }
+            PropertyChanges { target: rectCont; opacity: root.transitionOpacity; }
         }
 
         transitions: Transition {
@@ -46,6 +71,40 @@ PanelWindow {
             border.width: 1;
 
             Text {
+                text: "12";
+                anchors.centerIn: clockFace;
+                anchors.verticalCenterOffset: -33;
+                font.family: window.primaryFont;
+                font.bold: true;
+                font.pointSize: 8;
+            }
+
+            Text {
+                text: "3";
+                anchors.centerIn: clockFace;
+                anchors.horizontalCenterOffset: 33;
+                font.family: window.primaryFont;
+                font.pointSize: 8;
+            }
+
+            Text {
+                text: "6";
+                anchors.centerIn: clockFace;
+                anchors.verticalCenterOffset: 33;
+                font.family: window.primaryFont;
+                font.pointSize: 8;
+            }
+
+            Text {
+                text: "9";
+                anchors.centerIn: clockFace;
+                anchors.horizontalCenterOffset: -33;
+                font.family: window.primaryFont;
+                font.pointSize: 8;
+            }
+
+            Text {
+                id: clockDate;
                 color: "black";
                 font.family: window.primaryFont;
                 font.bold: true;
@@ -68,13 +127,13 @@ PanelWindow {
             Rectangle {
                 id: hourHand;
                 transformOrigin: Item.Bottom;
-                width: 1;
+                width: 2;
                 height: (clockFace.height) / 4;
                 color: "black";
 
                 x: (clockFace.width / 2) - (width / 2);
                 y: (clockFace.height / 2) - height;
-                rotation: (Time.hours / 60) * 360;
+                rotation: (Time.hours / 12) * 360;
             }
 
             Rectangle {

@@ -7,10 +7,10 @@ import Quickshell.Widgets
 MouseArea {
     id: root
     width: 150
-    height: parent.height
-    anchors.left: parent.left;
+    height: bar.height
+    anchors.left: bar.left;
     anchors.leftMargin: 8;
-    anchors.verticalCenter: parent.verticalCenter;
+    anchors.verticalCenter: bar.verticalCenter;
     hoverEnabled: true;
     cursorShape: Qt.PointingHandCursor;
     readonly property alias batteryHover: root.containsMouse;

@@ -15,9 +15,13 @@ Scope {
           id: window;
           property real barHeight: screen.height * 0.025;
           property real offset: 0.95;
+
+
           readonly property string primaryColor: "#ae8d75";
           readonly property string secondaryColor: "#dea795";
+          readonly property string primaryShadowColor: "black";
           readonly property string primaryFont: "Terminess Nerd Font";
+
           required property var modelData;
           screen: modelData;
           color: "transparent";
@@ -29,7 +33,7 @@ Scope {
             bottom: false;
           }
 
-          implicitHeight: barHeight;
+          implicitHeight: barHeight + 5;
 
 
           margins {
@@ -38,16 +42,27 @@ Scope {
             top: 8;
           }
 
-          Item {
-            id: content;
-              Rectangle {
-                width: window.width;
-                height: window.height;
-                color: "#ae8d75";
-                radius: 6;
-                border.color: "black";
-                border.width: 1;
-              }
+          Rectangle {
+            id: barShadow;
+            width: window.width - 10;
+            height: window.barHeight;
+            color: window.primaryShadowColor;
+            radius: 6;
+            border.color: "black";
+            border.width: 1;
+            anchors.centerIn: bar;
+            anchors.verticalCenterOffset: +5;
+            anchors.horizontalCenterOffset: +5;
+          }
+
+          Rectangle {
+            id: bar;
+            width: window.width - 10;
+            height: window.barHeight;
+            color: "#ae8d75";
+            radius: 6;
+            border.color: "black";
+            border.width: 1;
           }
 
           BatteryWidget {
@@ -57,7 +72,7 @@ Scope {
 
           ClockWidget {
             id: topClock;
-            anchors.centerIn: parent;
+            anchors.centerIn: bar;
           }
 
           ClockDetail {
