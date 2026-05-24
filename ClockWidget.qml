@@ -13,6 +13,19 @@ MouseArea {
     readonly property alias clockHover: timeArea.containsMouse
 
     Rectangle {
+        id: shadowRect;
+        width: timeRect.width;
+        height: timeRect.height;
+        anchors.centerIn: timeRect;
+        color: window.primaryShadowColor;
+        radius: timeRect.radius;
+        border.color: window.primaryShadowColor;
+        border.width: timeRect.border.width;
+        anchors.verticalCenterOffset: +2;
+        anchors.horizontalCenterOffset: +2;
+    }
+
+    Rectangle {
         id: timeRect
         width: 50
         height: (screen.height * 0.025) - 8
@@ -21,11 +34,11 @@ MouseArea {
         radius: 6
         border.color: "black";
         border.width: 1;
+    }
 
-        Text {
-        anchors.centerIn: parent
+    Text {
+        anchors.centerIn: timeRect;
         text: Time.time
         font: "Terminess Nerd Font"
-        }
     }
 }

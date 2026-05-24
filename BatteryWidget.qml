@@ -18,7 +18,22 @@ MouseArea {
     property UPowerDevice bat:
         UPower.displayDevice
 
+
     Rectangle {
+        id: batteryShadow
+        width: batteryCont.width;
+        height: batteryCont.height;
+        color: window.primaryShadowColor;
+        radius: batteryCont.radius;
+        border.color: batteryCont.border.color;
+        border.width: batteryCont.border.width;
+        anchors.centerIn: batteryCont;
+        anchors.verticalCenterOffset: +2;
+        anchors.horizontalCenterOffset: +2;
+    }
+
+    Rectangle {
+        id: batteryCont
         width: 150;
         height: parent.height - 8;
         color: batteryHover ? window.primaryColor : window.secondaryColor;
@@ -27,6 +42,7 @@ MouseArea {
         border.width: 1;
         anchors.centerIn: parent;
     }
+
 
     Text {
         anchors.centerIn: parent

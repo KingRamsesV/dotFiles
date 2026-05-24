@@ -46,7 +46,6 @@ PanelWindow {
         radius: 6;
         border.color: "black";
         opacity: 0;
-        anchors.centerIn: bar;
 
         states: State {
             name: "visible"; when: topClock.containsMouse;
@@ -57,6 +56,19 @@ PanelWindow {
             NumberAnimation { properties: "opacity"; easing.type: Easing.InOutQuad }
         }
 
+        Rectangle {
+            id: clockFaceShadow;
+            width: clockFace.width;
+            height: clockFace.height;
+            color: window.primaryShadowColor;
+            radius: 180;
+            anchors.horizontalCenter: parent.horizontalCenter;
+            anchors.verticalCenter: parent.verticalCenter;
+            anchors.verticalCenterOffset: -8;
+            anchors.horizontalCenterOffset: +2;
+            border.color: "black";
+            border.width: 1;
+        }
 
         Rectangle {
             id: clockFace;
