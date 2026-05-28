@@ -38,7 +38,7 @@ MouseArea {
         height: parent.height - 8;
         color: batteryHover ? window.primaryColor : window.secondaryColor;
         radius: 6;
-        border.color: "black";
+        border.color: window.primaryShadowColor;
         border.width: 1;
         anchors.centerIn: parent;
     }
@@ -51,6 +51,7 @@ MouseArea {
             const icon = bat.state === UPowerDeviceState.Charging ? "⚡" : pct > 60 ? "big harge" : pct > 20 ? "wittle charg" : "❗";
             return bat.isPresent ? icon + " " + pct + "%" : "...";
         }
+        color: batteryHover ? window.primaryShadowColor : window.primaryColor;
         font.family: window.primaryFont;
     }
 }

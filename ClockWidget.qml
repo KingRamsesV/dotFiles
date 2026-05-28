@@ -32,7 +32,7 @@ MouseArea {
         anchors.centerIn: parent
         color: timeArea.containsMouse ? window.primaryColor : window.secondaryColor;
         radius: 6
-        border.color: "black";
+        border.color: window.primaryShadowColor;
         border.width: 1;
     }
 
@@ -40,5 +40,6 @@ MouseArea {
         anchors.centerIn: timeRect;
         text: Time.time
         font: "Terminess Nerd Font"
+        color: timeArea.containsMouse ? window.primaryShadowColor : window.primaryColor;
     }
 }

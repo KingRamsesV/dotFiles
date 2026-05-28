@@ -22,7 +22,7 @@ PanelWindow {
         height: rectCont.height;
         color: window.primaryShadowColor;
         radius: rectCont.radius;
-        border.color: "black";
+        border.color: window.primaryShadowColor;
         opacity: 0;
         anchors.centerIn: rectCont;
         anchors.verticalCenterOffset: +5;
@@ -44,7 +44,7 @@ PanelWindow {
         height: 125;
         color: window.primaryColor;
         radius: 6;
-        border.color: "black";
+        border.color: window.primaryShadowColor;
         opacity: 0;
 
         states: State {
@@ -66,7 +66,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter;
             anchors.verticalCenterOffset: -8;
             anchors.horizontalCenterOffset: +2;
-            border.color: "black";
+            border.color: window.primaryShadowColor;
             border.width: 1;
         }
 
@@ -86,6 +86,7 @@ PanelWindow {
                 text: "12";
                 anchors.centerIn: clockFace;
                 anchors.verticalCenterOffset: -33;
+                color: window.primaryShadowColor;
                 font.family: window.primaryFont;
                 font.bold: true;
                 font.pointSize: 8;
@@ -95,6 +96,7 @@ PanelWindow {
                 text: "3";
                 anchors.centerIn: clockFace;
                 anchors.horizontalCenterOffset: 33;
+                color: window.primaryShadowColor;
                 font.family: window.primaryFont;
                 font.pointSize: 8;
             }
@@ -103,6 +105,7 @@ PanelWindow {
                 text: "6";
                 anchors.centerIn: clockFace;
                 anchors.verticalCenterOffset: 33;
+                color: window.primaryShadowColor;
                 font.family: window.primaryFont;
                 font.pointSize: 8;
             }
@@ -111,13 +114,14 @@ PanelWindow {
                 text: "9";
                 anchors.centerIn: clockFace;
                 anchors.horizontalCenterOffset: -33;
+                color: window.primaryShadowColor;
                 font.family: window.primaryFont;
                 font.pointSize: 8;
             }
 
             Text {
                 id: clockDate;
-                color: "black";
+                color: window.primaryShadowColor;
                 font.family: window.primaryFont;
                 font.bold: true;
                 font.pointSize: 11;
@@ -131,7 +135,7 @@ PanelWindow {
                 id: clockCenter;
                 width: 5;
                 height: 5;
-                color: "black";
+                color: window.primaryShadowColor;
                 radius: 180;
                 anchors.centerIn: parent;
             }
@@ -141,7 +145,7 @@ PanelWindow {
                 transformOrigin: Item.Bottom;
                 width: 2;
                 height: (clockFace.height) / 4;
-                color: "black";
+                color: window.primaryShadowColor;
 
                 x: (clockFace.width / 2) - (width / 2);
                 y: (clockFace.height / 2) - height;
@@ -153,7 +157,7 @@ PanelWindow {
                 transformOrigin: Item.Bottom;
                 width: 2;
                 height: (clockFace.height / 2);
-                color: "black";
+                color: window.primaryShadowColor;
 
                 x: (clockFace.width / 2) - (width / 2);
                 y: (clockFace.height / 2) - height;
@@ -165,7 +169,7 @@ PanelWindow {
                 transformOrigin: Item.Bottom;
                 width: 1;
                 height: (clockFace.height) / 2;
-                color: "black";
+                color: window.primaryShadowColor;
 
                 x: (clockFace.width / 2) - (width / 2);
                 y: (clockFace.height / 2) - height;

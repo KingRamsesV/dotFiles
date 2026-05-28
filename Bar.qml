@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
+import Quickshell.Hyprland
 
 import "popouts"
 
@@ -16,10 +17,12 @@ Scope {
           property real barHeight: screen.height * 0.025;
           property real offset: 0.95;
 
+          readonly property HyprlandMonitor monitor: Hyprland.monitorFor(root.screen);
+          property bool monitorIsFocused: (Hyprland.focusedMonitor?.id == monitor?.id);
 
-          readonly property string primaryColor: "#ae8d75";
-          readonly property string secondaryColor: "#dea795";
-          readonly property string primaryShadowColor: "black";
+          readonly property string primaryColor: "#dedbce"; // "#d1ccc1"; // "#ae8d75";
+          readonly property string secondaryColor: "#bc3e2c"; // "#cd9528"; //"#dea795";
+          readonly property string primaryShadowColor: "#3e294a" // "black";
           readonly property string primaryFont: "Terminess Nerd Font";
 
           required property var modelData;
@@ -59,7 +62,7 @@ Scope {
             id: bar;
             width: window.width - 10;
             height: window.barHeight;
-            color: "#ae8d75";
+            color: window.primaryColor;
             radius: 6;
             border.color: "black";
             border.width: 1;
@@ -76,6 +79,24 @@ Scope {
           }
 
           ClockDetail {
+          }
+
+          Rectangle {
+            id: workspacesCont;
+            x: (window.width * 0.88);
+            y: 4;
+            radius: 6;
+            width: 200;
+            height: bar.height - 8;
+            border.color: window.primaryShadowColor;
+            color: "black";
+            visible: false;
+          }
+
+          Workspaces {
+            anchors.horizontalCenter: workspacesCont.horizontalCenter;
+            anchors.verticalCenter: workspacesCont.verticalCenter;
+            anchors.horizontalCenterOffset: +3;
           }
 
         }

@@ -4,6 +4,7 @@
         <file>BatteryWidget.qml</file>
         <file>ClockWidget.qml</file>
         <file>Time.qml</file>
+        <file>Workspaces.qml</file>
         <file>popouts/BatteryDetail.qml</file>
         <file>popouts/ClockDetail.qml</file>
         <file>shell.qml</file>
