@@ -40,6 +40,6 @@ MouseArea {
         anchors.centerIn: timeRect;
         text: Time.time
         font: "Terminess Nerd Font"
-        color: timeArea.containsMouse ? window.primaryShadowColor : window.primaryColor;
+        color: timeArea.containsMouse ? window.primaryShadowColor : window.tertiaryColor;
     }
 }

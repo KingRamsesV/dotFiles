@@ -20,9 +20,10 @@ Scope {
           readonly property HyprlandMonitor monitor: Hyprland.monitorFor(root.screen);
           property bool monitorIsFocused: (Hyprland.focusedMonitor?.id == monitor?.id);
 
-          readonly property string primaryColor: "#dedbce"; // "#d1ccc1"; // "#ae8d75";
-          readonly property string secondaryColor: "#bc3e2c"; // "#cd9528"; //"#dea795";
-          readonly property string primaryShadowColor: "#3e294a" // "black";
+          readonly property string primaryColor: "#a7a28e" // "#dedbce"; // "#d1ccc1"; // "#ae8d75";
+          readonly property string secondaryColor: "#3d5926" // "#bc3e2c"; // "#cd9528"; //"#dea795";
+          readonly property string tertiaryColor: "#c7c5bb";
+          readonly property string primaryShadowColor: "#14200e" // "#3e294a" // "black";
           readonly property string primaryFont: "Terminess Nerd Font";
 
           required property var modelData;

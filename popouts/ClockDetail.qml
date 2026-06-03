@@ -16,6 +16,8 @@ PanelWindow {
     implicitWidth: 125;
     readonly property real transitionOpacity: 1;
 
+    mask: Region { }
+
     Rectangle {
         id: rectShadow;
         width: rectCont.width;

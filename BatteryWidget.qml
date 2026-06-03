@@ -14,6 +14,7 @@ MouseArea {
     hoverEnabled: true;
     cursorShape: Qt.PointingHandCursor;
     readonly property alias batteryHover: root.containsMouse;
+    visible: bat.isPresent;
 
     property UPowerDevice bat:
         UPower.displayDevice
@@ -49,9 +50,9 @@ MouseArea {
         text: {
             const pct = Math.round(bat.percentage * 100);
             const icon = bat.state === UPowerDeviceState.Charging ? "⚡" : pct > 60 ? "big harge" : pct > 20 ? "wittle charg" : "❗";
-            return bat.isPresent ? icon + " " + pct + "%" : "...";
+            return icon + " " + pct + "%";
         }
-        color: batteryHover ? window.primaryShadowColor : window.primaryColor;
+        color: batteryHover ? window.primaryShadowColor : window.tertiaryColor;
         font.family: window.primaryFont;
     }
 }
