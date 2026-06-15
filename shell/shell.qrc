@@ -1,0 +1,13 @@
+<RCC>
+    <qresource>
+        <file>Bar.qml</file>
+        <file>BatteryWidget.qml</file>
+        <file>ClockWidget.qml</file>
+        <file>Time.qml</file>
+        <file>Workspaces.qml</file>
+        <file>popouts/BatteryDetail.qml</file>
+        <file>popouts/ClockDetail.qml</file>
+        <file>shell.qml</file>
+        <file>shell.qmlproject</file>
+    </qresource>
+</RCC>
