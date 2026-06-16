@@ -1,6 +1,0 @@
-require("variables")
-require("settings")
-require("monitors")
-require("animations")
-require("binds")
-require("rules")
