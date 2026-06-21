@@ -1,16 +1,16 @@
 # dotFiles
 ### A Pending Title?
 
----
 
 ### About
 
+--- 
 ### Installation
 
 #### Hyprland dots
 
 Simply clone this repo to any directory within your home directory, 'cd' into the directory and run the install.sh, either through 'sh install.sh' or './install.sh'.  
-> [NOTE!]
+> [!note]
 > this will rename your previous hyprland.lua config so any existing configuration shouldn't be affected unless you have a folder named 'config' in your 'hypr' folder.*
 
 #### Quickshell dots
@@ -29,6 +29,7 @@ hl.exec_cmd("quickshell -p ~/$repolocation")
 
 These are a lot rougher around the edges than my hyprland configuration, so expect some weird stuff going on.
 
+---
 ### Changelog
 
 #### 07/20/2026
