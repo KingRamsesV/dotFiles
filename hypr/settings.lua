@@ -5,8 +5,8 @@
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("HYPRCURSOR_THEME", CursorName)
 hl.env("HYPRCURSOR_SIZE", CursorSize)
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDER_LIBRARY_NAME", "nvidia")
+hl.env("LIBVA_DRIVER_NAME", "mesa")
+hl.env("__GLX_VENDER_LIBRARY_NAME", "mesa")
 
 ---------------
 --- STARTUP ---
@@ -15,7 +15,8 @@ hl.env("__GLX_VENDER_LIBRARY_NAME", "nvidia")
 hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprctl setcursor " .. CursorName .. " " .. CursorSize)
   hl.exec_cmd("hyprpaper")
-  hl.exec_cmd("quickshell -p ~/dotFiles/shell/shell.qml")
+  hl.exec_cmd("qs -p ~/dotFiles/shell")
+  hl.exec_cmd("firefox --new-tab 'https://app.ringcentral.com/calls/recent/ringex/all/ANvOGn485vwpJM1A' --new-tab 'https://meit.byu.edu/' --new-tab 'https://byu.snipe-it.io/hardware'")
 end)
 
 ------------------------
